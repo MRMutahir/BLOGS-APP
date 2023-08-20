@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sigin up</title>
+    <link rel="stylesheet" href="sigin.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflar
+        e.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9Qp
+        RohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css"
+    />
+  </head>
+  <body>
+    <nav id="navabr-main">
+      <div class="navbar-name color-same">Personal Blogging App</div>
+      <button class="color-same" id="login-btn">login</button>
+      <div
+        class="navbar-name color-same Profilepicture"
+        onclick="selectProfile()"
+      >
+        Profile picture
+      </div>
+      <input type="file" id="profile-image-input" style="display: none" />
+    </nav>
+
+    <form action="#">
+      <div class="form">
+        <p>
+          <!-- First Name -->
+          <input type="text" id="f_name" placeholder="First Name" required />
+        </p>
+        <p>
+          <!-- Last Name -->
+          <input type="text" id="l_name" placeholder="Last Name" required />
+        </p>
+
+        <p>
+          <!-- Email -->
+          <input type="email" id="sigin_email" placeholder="Email" required />
+        </p>
+        <p>
+          <!-- Password -->
+          <input
+            type="password"
+            id="sigin_password"
+            placeholder="Password"
+            pattern="@"
+            minlength="8"
+            required
+          />
+        </p>
+        <p>
+          <!-- Repeat Password -->
+          <input
+            type="password"
+            id="Repeat_password"
+            placeholder="Repeat Password"
+            required
+          />
+        </p>
+        <p><input type="button" value="Signup" id="Signup-btn" /></p>
+      </div>
+    </form>
+  </body>
+  <!-- <img src="" alt=""> -->
+  <script type="module" src="siginup.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
+</html>

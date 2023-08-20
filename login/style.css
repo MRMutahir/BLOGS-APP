@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#navabr-main {
+  width: 100%;
+  /* position: fixed; */
+  display: flex;
+  justify-content: space-around;
+  background: #7749f8;
+  /* width: Fixed (1, 440px); */
+  height: Hug (112px);
+  /* padding: 32px 160px 32px 160px; */
+  border: 0px 0px 1px 0px;
+}
+#login-btn {
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+.navbar-name {
+  font-family: Inter;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  color: #ffffff;
+}
+.loginname {
+  width: Hug (1, 440px);
+  height: Hug (152px);
+}
+.loginname h1 {
+  width: Hug (106px);
+  height: Hug (48px);
+  margin: 40px 200px;
+}
+
+.form {
+  /* margin-top: 100px;
+  mar */
+  margin: 200px 40%;
+  width: 456px;
+  height: 259px;
+  top: 377px;
+  left: 492px;
+  background: #ffffff;
+  box-shadow: 0px 4px 10px 0px #0000001f;
+  padding: 100px;
+}
+input {
+  width: Fixed (240px);
+  height: Hug (38px);
+  top: 428px;
+  left: 600px;
+  gap: 6px;
+  border: #ffffff;
+}
+input:focus {
+  color: linear-gradient(0deg, #7749f8, #7749f8),
+    linear-gradient(0deg, #ffffff, #ffffff);
+}
+input::placeholder {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+#btnlogin {
+  width: Hug (87px);
+  height: Hug (38px);
+  top: 638px;
+  left: 668px;
+  padding: 10px 16px 10px 16px;
+  border-radius: 6px;
+  gap: 8px;
+  background: #7749f8;
+}

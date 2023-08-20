@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#navabr-main {
+  width: 100%;
+  /* position: fixed; */
+  display: flex;
+  justify-content: space-around;
+  background: #7749f8;
+  /* width: Fixed (1, 440px); */
+  height: Hug (112px);
+  /* padding: 32px 160px 32px 160px; */
+  border: 0px 0px 1px 0px;
+}
+
+#logout-btn {
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.navbar-name {
+  font-family: Inter;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  color: #ffffff;
+}
+
+#Signup-btn {
+  width: Hug (87px);
+  height: Hug (38px);
+  top: 638px;
+  left: 668px;
+  padding: 10px 16px 10px 16px;
+  border-radius: 6px;
+  gap: 8px;
+  background: #7749f8;
+}
+
+.Dashbord {
+  width: Hug (1, 440px);
+  height: Hug (152px);
+  position: absolute;
+  margin: 60px;
+}
+
+.Dashbord-box {
+  position: relative;
+  width: 881px;
+  height: 430px;
+  top: 181px;
+  left: 166px;
+  background: #ffffff;
+  box-shadow: 0px 4px 10px 0px #0000001f;
+  /* display: flex; */
+}
+
+#input-text {
+  /* width: Fixed (760px);
+  height: Hug (38px); */
+  width: 500px;
+  height: 50px;
+  border-radius: 20px;
+
+  margin-bottom: 40px;
+  margin: 20px;
+}
+
+#textarea {
+  width: 500px;
+  height: 100px;
+  top: 288px;
+  left: 233px;
+  gap: 6px;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+/* .Dashbord-input {
+  display: flex;
+} */
+
+#postbtn {
+  width: Fixed (135px);
+  height: Hug (38px);
+  top: 422px;
+  left: 233px;
+  padding: 10px 16px 10px 16px;
+  border-radius: 6px;
+  gap: 8px;
+  background: #7749f8;
+  margin: 20px;
+}
+
+.outer-div {
+  background: linear-gradient(0deg, #FFFFFF, #FFFFFF),
+  linear-gradient(0deg, #DEE2E6, #DEE2E6);
+  
+  margin-top: 200px;
+  margin-left: 160px;
+  border-radius: 1px solid black;
+  width: 881px;
+  height: auto;
+  top: 181px;
+  left: 166px;
+  border-radius: 20px;
+  /* position: relative; */
+}
+
+.section {
+  display: flex;
+}
+
+.blog-title {
+ 
+  /* left: 100px;
+  top: 100%; */
+  margin-top: 30px;
+  margin-left: 20px;
+}
+.image img{
+  border-radius: 50px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+  margin-top: 40px;
+  /* position: ; */
+}
+.para{
+  margin: 30px;
+}
