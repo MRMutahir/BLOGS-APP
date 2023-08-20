@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#navabr-main {
+  padding: 10px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  background: #7749f8;
+  /* width: Fixed (1, 440px); */
+  height: Hug (112px);
+  /* padding: 32px 160px 32px 160px; */
+  border: 0px 0px 1px 0px;
+}
+#login-btn {
+  color: #ffffff;
+  background-color: transparent;
+  width: 100px;
+  padding: 5px;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+#Signup-btn {
+  color: #ffffff;
+  background-color: transparent;
+  width: 100px;
+  padding: 5px;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+.navbar-name {
+  font-family: Inter;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  color: #ffffff;
+}
+
+.container {
+  /* padding: 60px; */
+}
+
+.outer-div {
+  box-shadow: 10px 10px 10px 10px black;
+  background: linear-gradient(0deg, #ffffff, #ffffff),
+    linear-gradient(0deg, #dee2e6, #dee2e6);
+  margin-top: 200px;
+  margin-left: 160px;
+  border-radius: 1px solid black;
+  width: 881px;
+  height: auto;
+  top: 181px;
+  left: 166px;
+  border-radius: 20px;
+
+  padding: 20px;
+}
+
+.section {
+  display: flex;
+}
+
+.blog-title {
+  margin-top: 30px;
+  margin-left: 20px;
+}
+.image img {
+  border-radius: 50px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+  margin-top: 40px;
+}
+.para {
+  margin: 30px;
+}

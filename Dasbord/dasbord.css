@@ -5,6 +5,8 @@
 }
 
 #navabr-main {
+  padding: 10px;
+
   width: 100%;
   /* position: fixed; */
   display: flex;
@@ -17,11 +19,12 @@
 }
 
 #logout-btn {
-  color: #ffffff;
+  color: black;
   background-color: transparent;
-  border: none;
+  width: 100px;
+  padding: 5px;
   font-family: Inter;
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 15px;
   letter-spacing: -0.02em;
@@ -60,10 +63,11 @@
   position: relative;
   width: 881px;
   height: 430px;
-  top: 181px;
+  top: 150px;
   left: 166px;
   background: #ffffff;
   box-shadow: 0px 4px 10px 0px #0000001f;
+  /* margin-bottom: 200px; */
   /* display: flex; */
 }
 
@@ -73,7 +77,7 @@
   width: 500px;
   height: 50px;
   border-radius: 20px;
-
+ padding-left: 20px;
   margin-bottom: 40px;
   margin: 20px;
 }
@@ -86,6 +90,7 @@
   gap: 6px;
   border-radius: 20px;
   margin: 20px;
+  padding: 20px;
 }
 
 /* .Dashbord-input {
@@ -105,9 +110,10 @@
 }
 
 .outer-div {
+  box-shadow: 10px 10px 10px black;
+  /* background-color: #fff; */
   background: linear-gradient(0deg, #FFFFFF, #FFFFFF),
   linear-gradient(0deg, #DEE2E6, #DEE2E6);
-  
   margin-top: 200px;
   margin-left: 160px;
   border-radius: 1px solid black;
@@ -116,6 +122,7 @@
   top: 181px;
   left: 166px;
   border-radius: 20px;
+  /* color: red; */
   /* position: relative; */
 }
 
@@ -144,3 +151,32 @@
 .para{
   margin: 30px;
 }
+
+#Blogs{
+  position: fixed;
+  box-shadow: 20px 10px 5px  black;
+  /* left: 90%; */
+  /* right: 90%; */
+  margin-left: 70vw;
+  background-color: #7749f8;
+  border: none;
+  border-radius: 20px;
+  padding: 20px;
+}
+#Blogs:hover{
+  box-shadow: 20px 10px 5px  blue;
+
+}
+.Title{
+  font-size: 34px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  font-family: monospace;
+}
+
+/* .outer-div{
+  background-color: #7749f8;
+} */
+/* .uidiv{
+  overflow-y: scroll;
+} */

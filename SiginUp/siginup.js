@@ -11,7 +11,6 @@ import {
   storage,
   collection,
   addDoc,
-  
 } from "../firebase/firebase.js";
 
 const auth = getAuth();
@@ -21,6 +20,13 @@ let sigin_password = document.getElementById("sigin_password");
 let f_name = document.getElementById("f_name");
 let l_name = document.getElementById("l_name");
 let Repeat_password = document.getElementById("Repeat_password");
+let loginbtn = document
+  .getElementById("login-btn")
+
+  .addEventListener("click", () => {
+    window.location = "../login/login.html";
+  });
+
 let Signup_btn = document
   .getElementById("Signup-btn")
   .addEventListener("click", btnfoo);
@@ -134,7 +140,8 @@ function btnfoo() {
   if (
     !emailValue.indexOf("@") === -1 ||
     passwordValue.length !== 8 ||
-    repeatPassword.length !== passwordValue.length 
+    repeatPassword.length !== passwordValue.length ||
+    imageURL[0] == ""
   ) {
     return alert("Check your email , paswoord");
   }
@@ -147,8 +154,8 @@ function btnfoo() {
     password: passwordValue,
     repeatPassword: repeatPassword,
   };
-  console.log("hi");
-  console.log(userdata);
+  // console.log("hi");
+  // console.log(userdata);
 
   createUserWithEmailAndPassword(auth, emailValue, passwordValue)
     .then(async (userCredential) => {
@@ -161,6 +168,7 @@ function btnfoo() {
       });
       if (passwordValue == repeatPassword) {
         window.location = "../login/login.html";
+        // alert("check your repeat password and  profile picture ");
       } else {
         alert("repeat password is not match password");
       }

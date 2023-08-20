@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 #navabr-main {
+  padding: 10px;
+
   width: 100%;
   position: fixed;
   display: flex;
@@ -17,9 +19,10 @@
 #login-btn {
   color: #ffffff;
   background-color: transparent;
-  border: none;
+  width: 100px;
+  padding: 5px;
   font-family: Inter;
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 15px;
   letter-spacing: -0.02em;
@@ -75,4 +78,13 @@ input::placeholder {
   border-radius: 6px;
   gap: 8px;
   background: #7749f8;
+}
+
+.Profilepicture {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 100px;
+}
+.Profilepicture:hover {
+  box-shadow: 10px 10px 0px 10px white;
 }

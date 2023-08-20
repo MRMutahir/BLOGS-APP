@@ -8,6 +8,11 @@ const auth = getAuth();
 
 let email = document.getElementById("email");
 let password = document.getElementById("password");
+let Signupbtn = document
+  .getElementById("Signup-btn")
+  .addEventListener("click", () => {
+    window.location = "../SiginUp/sigin.html";
+  });
 let btn = document
   .getElementById("btnlogin")
   .addEventListener("click", btnfoologin);

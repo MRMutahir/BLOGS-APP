@@ -12,12 +12,17 @@ import {
 const auth = getAuth();
 let blogtittle = document.getElementById("input-text");
 let blogstext = document.getElementById("textarea");
-console.log(blogtittle, textarea);
+// console.log(blogtittle, textarea);
 let uidiv = document.querySelector(".uiset");
+let Blogs = document
+  .getElementById("Blogs")
+  .addEventListener("click", allBlogs);
 let div = document.createElement("div");
+
+// console.log(username);
 let isloggedinuser;
-let cureentUsername;
-let cureentUserLastname;
+// let cureentUsername;
+// let cureentUserLastname;
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in, see docs for a list of available properties
@@ -28,7 +33,7 @@ onAuthStateChanged(auth, (user) => {
     getUserdata(isloggedinuser);
     // displayUi(id)
     //     userData = uid;
-    console.log(isloggedinuser);
+    // console.log(isloggedinuser);
 
     //       console.log(blogsdata);
   } else {
@@ -46,11 +51,13 @@ async function getUserdata(id) {
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
+    // console.log("Document data:", docSnap.data());
     let { email, image, lastname, name, password } = docSnap.data();
     // cureentUserLastname = name,
     // cureentUserLastname =lastname
     let fullname = name + lastname;
+    let username = document.querySelector(".username");
+    username.innerHTML = fullname;
     continueUi(fullname);
   } else {
     // docSnap.data() will be undefined in this case
@@ -69,31 +76,18 @@ async function blogPost() {
   const docRef = doc(db, "userData", isloggedinuser);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
+    // console.log("Document data:", docSnap.data());
     let { email, image, lastname, name, password } = docSnap.data();
+    // username.innerHTML = name + lastname;
     displayUi(title, text, email, image, lastname, name, isloggedinuser);
   } else {
     // docSnap.data() will be undefined in this case
     console.log("No such document!");
   }
-  // onAuthStateChanged(auth, async (user) => {
-  //   if (user) {
-
-  //     const uid = user.uid;
-
-  //   } else {
-  //   }
-  // });
+  title.value = "";
+  text.value = "";
 }
 
-// await setDoc(doc(db, "postcontent", uid), {
-//   Title: title,
-//   TextContent: text,
-//   Email: email,
-//   Image: image,
-//   lastname: lastname,
-//   Name: name,
-// });
 async function displayUi(title, text, email, image, lastname, name, id) {
   let uiset = ` <div class="outer-div">
  <div class="inner-div">
@@ -104,11 +98,11 @@ async function displayUi(title, text, email, image, lastname, name, id) {
       <img src="${image}" height="100px" width="100px" alt="" />
     </div>
     <!-- Blog Title -->
-    <div class="blog-title"><b>${title}</b> <br><i class="names">${
+    <div class="blog-title"><b  class ="Title">${title}</b> <br><i class="names">${
     name + lastname
   }-${new Date().toLocaleString()}</i>
     <br>
-    <span>06-11-2023</span>
+  
   </div>
     <!-- User Name -->
     <!-- <div class="user-name"></div> -->
@@ -117,12 +111,7 @@ async function displayUi(title, text, email, image, lastname, name, id) {
  ${text}
   </div>
   <!-- Button container -->
-  <div class="button-container">
-    <!-- Delete button -->
-    <div class="button">Delete</div>
-    <!-- Edit button -->
-    <div class="button">Edit</div>
-  </div>
+  
   </div>
   </div>
  `;
@@ -150,29 +139,28 @@ async function displayUi(title, text, email, image, lastname, name, id) {
   // Generate a unique document ID, if necessary
   // const newDocRef = doc(db, `${name + lastname}/${id}`);
   const docRef = await addDoc(collection(db, "postcontent"), {
-  ...docData
+    ...docData,
   });
-  console.log("Document written with ID: ye data jb m sareblogs mangvaotw mujh mil jy ", docRef.id);
-  
-
-  // Use setDoc to add the document to the collection
-  // await setDoc(newDocRef, docData);
-
+  console.log(
+    "Document written with ID: ye data jb m sareblogs mangvaotw mujh mil jy ",
+    docRef.id
+  );
   // Use addDoc to automatically generate a document ID
   await addDoc(collection(db, `${name + lastname}`), docData);
   // Add the HTML to the UI
+  // div.setAttribute("class", "creatediv");
   div.innerHTML += uiset;
   uidiv.appendChild(div);
-  //  phele ye data save hoga pher ui
 }
 
 async function continueUi(FULLNAME) {
-  console.log(FULLNAME);
+  // console.log(FULLNAME);
   const querySnapshot = await getDocs(collection(db, `${FULLNAME}`));
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
-    let { Title, TextContent, Email, Image, lastname, Name ,Timestamp} = doc.data();
+    // console.log(doc.id, " => ", doc.data());
+    let { Title, TextContent, Email, Image, lastname, Name, Timestamp } =
+      doc.data();
     // console.log(Title, TextContent, Email, Image, lastname, Name);
     let uiset = ` <div class="outer-div">
      <div class="inner-div">
@@ -183,7 +171,7 @@ async function continueUi(FULLNAME) {
            <img src="${Image}" height="100px" width="100px" alt="" />
          </div>
          <!-- Blog Title -->
-        <div class="blog-title"><b>${Title}</b> <br><i class="names">${Name} - ${Timestamp}</i>
+        <div class="blog-title"><b class ="Title">${Title}</b> <br><i class="names">${Name} - ${Timestamp}</i>
         <br>
   
        </div>
@@ -196,20 +184,28 @@ async function continueUi(FULLNAME) {
        <!-- Button container -->
        <div class="button-container">
          <!-- Delete button -->
-         <div class="button">Delete</div>
+         <button class="button"  onclick="Deletefoo()" >Delete</button>
          <!-- Edit button -->
-         <div class="button">Edit</div>
+         <button class="button">Edit</button>
        </div>
      </div>
      </div>
      `;
 
+    // div.setAttribute("class", "creatediv");
     div.innerHTML += uiset;
     uidiv.appendChild(div);
   });
 }
-
+function allBlogs() {
+  window.location = "../AllBlogs/Allblogs.html";
+  // console.log("SALAAM");
+}
+function Deletefoo() {
+  console.log("SALAM");
+}
 // continueUi();
 
 // console.log(blogsdata);
+window.Deletefoo = Deletefoo;
 window.blogPost = blogPost;

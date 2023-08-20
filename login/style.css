@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 #navabr-main {
+  padding: 10px;
   width: 100%;
   /* position: fixed; */
   display: flex;
@@ -14,12 +15,14 @@
   /* padding: 32px 160px 32px 160px; */
   border: 0px 0px 1px 0px;
 }
-#login-btn {
+#Signup-btn {
+  /* color: bl; */
   color: #ffffff;
   background-color: transparent;
-  border: none;
+  width: 100px;
+  padding: 5px;
   font-family: Inter;
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 15px;
   letter-spacing: -0.02em;
