@@ -8,10 +8,14 @@ import {
   addDoc,
   collection,
   getDocs,
+  deleteDoc,
+  // updateDoc,
+  signOut 
 } from "../firebase/firebase.js";
 const auth = getAuth();
 let blogtittle = document.getElementById("input-text");
 let blogstext = document.getElementById("textarea");
+let logoutBtn =  document.getElementById("logout-btn")
 // console.log(blogtittle, textarea);
 let uidiv = document.querySelector(".uiset");
 let Blogs = document
@@ -56,6 +60,7 @@ async function getUserdata(id) {
     // cureentUserLastname = name,
     // cureentUserLastname =lastname
     let fullname = name + lastname;
+    fullname = name + lastname;
     let username = document.querySelector(".username");
     username.innerHTML = fullname;
     continueUi(fullname);
@@ -84,8 +89,8 @@ async function blogPost() {
     // docSnap.data() will be undefined in this case
     console.log("No such document!");
   }
-  title.value = "";
-  text.value = "";
+  title = "";
+  text = "";
 }
 
 async function displayUi(title, text, email, image, lastname, name, id) {
@@ -111,7 +116,12 @@ async function displayUi(title, text, email, image, lastname, name, id) {
  ${text}
   </div>
   <!-- Button container -->
-  
+  <div class="button-container">
+         <!-- Delete button -->
+         <button class="button" >Delete</button>
+         <!-- Edit button -->
+         <button class="button">Edit</button>
+       </div>
   </div>
   </div>
  `;
@@ -141,10 +151,10 @@ async function displayUi(title, text, email, image, lastname, name, id) {
   const docRef = await addDoc(collection(db, "postcontent"), {
     ...docData,
   });
-  console.log(
-    "Document written with ID: ye data jb m sareblogs mangvaotw mujh mil jy ",
-    docRef.id
-  );
+  // console.log(
+  //   "Document written with ID: ye data jb m sareblogs mangvaotw mujh mil jy ",
+  //   docRef.id
+  // );
   // Use addDoc to automatically generate a document ID
   await addDoc(collection(db, `${name + lastname}`), docData);
   // Add the HTML to the UI
@@ -184,9 +194,13 @@ async function continueUi(FULLNAME) {
        <!-- Button container -->
        <div class="button-container">
          <!-- Delete button -->
-         <button class="button"  onclick="Deletefoo()" >Delete</button>
+         <button class="button" onclick="Deletefoo('${Name + lastname}','${
+      doc.id
+    }')" >Delete</button>
          <!-- Edit button -->
-         <button class="button">Edit</button>
+         <button class="button" onclick="Editfoo('${Name + lastname}','${
+      doc.id
+    }')">Edit</button>
        </div>
      </div>
      </div>
@@ -198,14 +212,52 @@ async function continueUi(FULLNAME) {
   });
 }
 function allBlogs() {
-  window.location = "../AllBlogs/Allblogs.html";
+  window.location = "../AllBlogs/index.html";
   // console.log("SALAAM");
 }
-function Deletefoo() {
-  console.log("SALAM");
+//
+
+async function Deletefoo(fullname, id) {
+  // console.log(fullname);
+  // console.log(id);
+  await deleteDoc(doc(db, fullname, id));
+  window.location.reload();
 }
+async function Editfoo(fullname, id) {
+  console.log("SALAM  ");
+  console.log(fullname, id);
+
+  // try {
+  //   // console.log(postIdGlobal);
+  //   const updateDocRef = doc(db, fullname, id);
+  //   const response = updateDoc(updateDocRef, {
+  //     Title: blogstext.value,
+  //     textPara: blogstext.value,
+  //     Id: id,
+  //     // currentTime: serverTimestamp(),
+  //   });
+
+  //   // showBlogs();
+
+  // } catch (error) {
+  //   console.log(error);
+  // }
+}
+logoutBtn.addEventListener("click",()=>{
+  // console.log("Ghhdu");
+  signOut(auth).then(() => {
+    // Sign-out successful.
+    alert("Sign-out successful")
+    window.location = "../AllBlogs/index.html";
+
+  }).catch((error) => {
+    // An error happened.
+    console.log(" An error happened.");
+  });
+})
 // continueUi();
 
 // console.log(blogsdata);
+window.Editfoo = Editfoo;
 window.Deletefoo = Deletefoo;
 window.blogPost = blogPost;

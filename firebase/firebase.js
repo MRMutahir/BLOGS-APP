@@ -8,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut 
 } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js";
 //    m abhi is ko commint kr raa hon pher kl jo jo  need  hogi m get krlnga
 import {
@@ -17,7 +18,9 @@ import {
   collection,
   addDoc,
   getDoc,
-  getDocs
+  getDocs,
+  deleteDoc,
+
   // doc,
 } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js";
 
@@ -75,6 +78,8 @@ export {
   addDoc,
   doc,
   getDoc,
-  getDocs
+  getDocs,
+  deleteDoc,
+  signOut 
 };
 // window.selects = selects

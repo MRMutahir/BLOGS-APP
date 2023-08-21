@@ -17,12 +17,12 @@ function Signup() {
 
 let container = document.getElementById("container");
 let div = document.createElement("div");
-console.log(container);
+// console.log(container);
 async function SetUi() {
   const querySnapshot = await getDocs(collection(db, "postcontent"));
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
+    // console.log(doc.id, " => ", doc.data());
     let { Title, TextContent, Email, Image, lastname, Name, Timestamp } =
       doc.data();
 

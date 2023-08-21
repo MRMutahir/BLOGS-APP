@@ -48,8 +48,8 @@ function selectProfile() {
   profileImageInput.addEventListener("change", function () {
     const selectedFile = profileImageInput.files[0];
     if (selectedFile) {
-      console.log(selectedFile);
-      console.log(selectedFile.name);
+      // console.log(selectedFile);
+      // console.log(selectedFile.name);
       // selectedFile.name;
       // Display the selected image (e.g., by setting the image source)
       // Example:
@@ -76,7 +76,7 @@ function selectProfile() {
             // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
             const progress =
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log("Upload is " + progress + "% done");
+            // console.log("Upload is " + progress + "% done");
             switch (snapshot.state) {
               case "paused":
                 console.log("Upload is paused");
@@ -108,7 +108,7 @@ function selectProfile() {
             // Upload completed successfully, now we can get the download URL
             getDownloadURL(uploadTask.snapshot.ref).then(
               async (downloadURL) => {
-                console.log("File available at", downloadURL);
+                // console.log("File available at", downloadURL);
                 imageURL.push(downloadURL);
                 // const docRef = await addDoc(collection(db, "usersimage"), {
                 //   image: downloadURL,
@@ -161,7 +161,7 @@ function btnfoo() {
     .then(async (userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(user.uid);
+      // console.log(user.uid);
       useruid = user.uid;
       await setDoc(doc(db, "userData", user.uid), {
         ...userdata,
@@ -183,9 +183,9 @@ function btnfoo() {
   l_name.value = "";
   emailValue = "";
   passwordValue = "";
-  repeatPassword = "";
+  repeatPassword.value = "";
 }
 // console.log(passwordValue.length);
-console.log(imageURL);
+// console.log(imageURL);
 // let a = imageURL.join(",");
 // console.log(a);

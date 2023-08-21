@@ -19,13 +19,13 @@ let btn = document
 function btnfoologin() {
   let emailValue = email.value;
   let passwordValue = password.value;
-  console.log(emailValue, passwordValue);
+  // console.log(emailValue, passwordValue);
   signInWithEmailAndPassword(auth, emailValue, passwordValue)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(user);
-      window.location = "../Dasbord/index.html";
+      // console.log(user);
+      window.location = "../Dasbord/dasbord.html";
       // ...
     })
     .catch((error) => {
