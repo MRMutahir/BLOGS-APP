@@ -1,4 +1,4 @@
-import { collection, getDocs, db } from "../firebase/firebase.js";
+import { collection, getDocs, db } from "./firebase/firebase.js";
 
 let Signupbtn = document
   .getElementById("Signup-btn")

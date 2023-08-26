@@ -212,8 +212,8 @@ async function continueUi(FULLNAME) {
   });
 }
 function allBlogs() {
-  window.location = "../AllBlogs/index.html";
   // console.log("SALAAM");
+  window.location.href = "../index.html";
 }
 //
 
