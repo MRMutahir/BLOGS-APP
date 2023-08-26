@@ -9,13 +9,13 @@ import {
   collection,
   getDocs,
   deleteDoc,
-  // updateDoc,
-  signOut 
+  updateDoc,
+  signOut,
 } from "../firebase/firebase.js";
 const auth = getAuth();
 let blogtittle = document.getElementById("input-text");
 let blogstext = document.getElementById("textarea");
-let logoutBtn =  document.getElementById("logout-btn")
+let logoutBtn = document.getElementById("logout-btn");
 // console.log(blogtittle, textarea);
 let uidiv = document.querySelector(".uiset");
 let Blogs = document
@@ -29,20 +29,19 @@ let isloggedinuser;
 // let cureentUserLastname;
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/auth.user
-    // const uid = user.uid;
+  
     isloggedinuser = user.uid;
-    // id = uid
-    getUserdata(isloggedinuser);
-    // displayUi(id)
-    //     userData = uid;
-    // console.log(isloggedinuser);
 
-    //       console.log(blogsdata);
+    getUserdata(isloggedinuser);
+ 
   } else {
-    // User is signed out
-    // ...
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Something went wrong!',
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
+    
   }
 });
 //
@@ -164,7 +163,7 @@ async function displayUi(title, text, email, image, lastname, name, id) {
 }
 
 async function continueUi(FULLNAME) {
-  // console.log(FULLNAME);
+  // console.log(ubdatedata);
   const querySnapshot = await getDocs(collection(db, `${FULLNAME}`));
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
@@ -201,6 +200,7 @@ async function continueUi(FULLNAME) {
          <button class="button" onclick="Editfoo('${Name + lastname}','${
       doc.id
     }')">Edit</button>
+
        </div>
      </div>
      </div>
@@ -224,40 +224,93 @@ async function Deletefoo(fullname, id) {
   window.location.reload();
 }
 async function Editfoo(fullname, id) {
-  console.log("SALAM  ");
-  console.log(fullname, id);
-
-  // try {
-  //   // console.log(postIdGlobal);
-  //   const updateDocRef = doc(db, fullname, id);
-  //   const response = updateDoc(updateDocRef, {
-  //     Title: blogstext.value,
-  //     textPara: blogstext.value,
-  //     Id: id,
-  //     // currentTime: serverTimestamp(),
-  //   });
-
-  //   // showBlogs();
-
-  // } catch (error) {
-  //   console.log(error);
-  // }
-}
-logoutBtn.addEventListener("click",()=>{
-  // console.log("Ghhdu");
-  signOut(auth).then(() => {
-    // Sign-out successful.
-    alert("Sign-out successful")
-    window.location = "../AllBlogs/index.html";
-
-  }).catch((error) => {
-    // An error happened.
-    console.log(" An error happened.");
+  // console.log("SALAM ");
+  // console.log(fullname, id);
+  Swal.fire({
+    title: "<strong><b>Update value</b></strong>",
+    icon: "info",
+    html: ` <label for="fieldToUpdate">Field to Update:</label>
+     <input type="text" id="fieldToUpdate" name="fieldToUpdate"><br>
+ 
+     <label for="anotherFieldToUpdate">Another Field to Update:</label>
+     <input type="text" id="anotherFieldToUpdate" name="anotherFieldToUpdate"><br>
+     <button type="submit" onclick="updatebtn('${fullname}','${
+      id
+    }')">>Update Document</button>`,
+    showCloseButton: true,
+    showCancelButton: true,
+    focusConfirm: false,
+    confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+    confirmButtonAriaLabel: "Thumbs up, great!",
+    cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
+    cancelButtonAriaLabel: "Thumbs down",
   });
-})
+}
+async function updatebtn(fullname,id) {
+  // console.log("UPDATE");
+  // console.log(fullname,id);
+
+  // Get the values from the input fields
+  const fieldToUpdateValue = document.getElementById("fieldToUpdate").value;
+  const anotherFieldToUpdateValue = document.getElementById(
+    "anotherFieldToUpdate"
+  ).value;
+  // console.log(fieldToUpdateValue);
+  // console.log(anotherFieldToUpdateValue);
+  
+if(fieldToUpdateValue == ""|| anotherFieldToUpdateValue=="")return alert('KXH tw lhik')
+
+  // Reference to the document you want to update
+  const documentRef = doc(db, fullname, id)
+
+  // Data you want to update in the document
+  const updatedData = {
+    Title: fieldToUpdateValue,
+    TextContent: anotherFieldToUpdateValue,
+  };
+
+  // Update the document
+  try {
+    await updateDoc(documentRef, updatedData);
+    console.log("Document successfully updated!");
+    window.location.reload();
+    // continueUi(...updatedData)
+    
+  } catch (error) {
+    console.error("Error updating document: ", error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Something went wrong!',
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
+    
+  }
+}
+logoutBtn.addEventListener("click", () => {
+  // console.log("Ghhdu");
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+      alert("Sign-out successful");
+      window.location = "../AllBlogs/index.html";
+    })
+    .catch((error) => {
+      // An error happened.
+      console.log(" An error happened.");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        footer: '<a href="">Why do I have this issue?</a>'
+      })
+      
+    });
+});
 // continueUi();
 
 // console.log(blogsdata);
+window.updatebtn = updatebtn;
 window.Editfoo = Editfoo;
 window.Deletefoo = Deletefoo;
 window.blogPost = blogPost;

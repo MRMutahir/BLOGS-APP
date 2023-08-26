@@ -155,8 +155,6 @@
 #Blogs{
   position: fixed;
   box-shadow: 20px 10px 5px  black;
-  /* left: 90%; */
-  /* right: 90%; */
   margin-left: 70vw;
   background-color: #7749f8;
   border: none;
@@ -172,6 +170,15 @@
   font-weight: 900;
   margin-bottom: 10px;
   font-family: monospace;
+}
+.button-container button{
+  padding: 10px;
+  border-radius: 10px;
+  color:#7749f8;
+  font-size: large;
+  font-weight: 900;
+  font-family: monospace;
+  margin-bottom: 10px;
 }
 
 /* .outer-div{

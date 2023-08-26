@@ -1,4 +1,5 @@
 // import { getAuth, createUserWithEmailAndPassword,auth} from "../firebase/firebase.js"
+Swal.fire('Select image create user Enjoy updates')
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -124,6 +125,13 @@ function selectProfile() {
         );
       } catch (error) {
         console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          footer: '<a href="">Why do I have this issue?</a>'
+        })
+        
       }
     }
     // console.log(useruid, "useruid>>>>>");
@@ -177,13 +185,20 @@ function btnfoo() {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode, errorMessage);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        footer: '<a href="">Why do I have this issue?</a>'
+      })
+      
       // ..
     });
   f_name.value = "";
   l_name.value = "";
   emailValue = "";
   passwordValue = "";
-  repeatPassword.value = "";
+  repeatPassword = "";
 }
 // console.log(passwordValue.length);
 // console.log(imageURL);
