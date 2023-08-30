@@ -29,19 +29,16 @@ let isloggedinuser;
 // let cureentUserLastname;
 onAuthStateChanged(auth, (user) => {
   if (user) {
-  
     isloggedinuser = user.uid;
 
     getUserdata(isloggedinuser);
- 
   } else {
     Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Something went wrong!',
-      footer: '<a href="">Why do I have this issue?</a>'
-    })
-    
+      icon: "error",
+      title: "Oops...",
+      text: "Something went wrong!",
+      footer: '<a href="">Why do I have this issue?</a>',
+    });
   }
 });
 //
@@ -116,24 +113,19 @@ async function displayUi(title, text, email, image, lastname, name, id) {
   </div>
   <!-- Button container -->
   <div class="button-container">
-         <!-- Delete button -->
-         <button class="button" >Delete</button>
-         <!-- Edit button -->
-         <button class="button">Edit</button>
+  <!-- Delete button -->
+  <button class="button" onclick="Deletefoo('${name + lastname}','${
+    doc.id
+  }')" >Delete</button>
+  <!-- Edit button -->
+  <button class="button" onclick="Editfoo('${name + lastname}','${
+    doc.id
+  }')">Edit</button>
        </div>
   </div>
   </div>
  `;
 
-  // await setDoc(doc(db, `${name + lastname}`, isloggedinuser), {
-  //   Title: title,
-  //   TextContent: text,
-  //   Email: email,
-  //   Image: image,
-  //   lastname: lastname,
-  //   Name: name,
-  // });
-  // Set the data for the document you want to add
   const docData = {
     ID: id,
     Title: title,
@@ -229,24 +221,21 @@ async function Editfoo(fullname, id) {
   Swal.fire({
     title: "<strong><b>Update value</b></strong>",
     icon: "info",
-    html: ` <label for="fieldToUpdate">Field to Update:</label>
+    html: ` <label for="fieldToUpdate">Title to Update</label>
      <input type="text" id="fieldToUpdate" name="fieldToUpdate"><br>
- 
-     <label for="anotherFieldToUpdate">Another Field to Update:</label>
+     <label for="anotherFieldToUpdate">Para to Update</label>
      <input type="text" id="anotherFieldToUpdate" name="anotherFieldToUpdate"><br>
-     <button type="submit" onclick="updatebtn('${fullname}','${
-      id
-    }')">>Update Document</button>`,
+     <button type="submit" onclick="updatebtn('${fullname}','${id}')">>Update Document</button>`,
     showCloseButton: true,
     showCancelButton: true,
     focusConfirm: false,
-    confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
-    confirmButtonAriaLabel: "Thumbs up, great!",
-    cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
+    // confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+    // // confirmButtonAriaLabel: "Thumbs up, great!",
+    // cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
     cancelButtonAriaLabel: "Thumbs down",
   });
 }
-async function updatebtn(fullname,id) {
+async function updatebtn(fullname, id) {
   // console.log("UPDATE");
   // console.log(fullname,id);
 
@@ -257,11 +246,12 @@ async function updatebtn(fullname,id) {
   ).value;
   // console.log(fieldToUpdateValue);
   // console.log(anotherFieldToUpdateValue);
-  
-if(fieldToUpdateValue == ""|| anotherFieldToUpdateValue=="")return alert('KXH tw lhik')
+
+  if (fieldToUpdateValue == "" || anotherFieldToUpdateValue == "")
+    return alert("KXH tw lhik");
 
   // Reference to the document you want to update
-  const documentRef = doc(db, fullname, id)
+  const documentRef = doc(db, fullname, id);
 
   // Data you want to update in the document
   const updatedData = {
@@ -274,17 +264,14 @@ if(fieldToUpdateValue == ""|| anotherFieldToUpdateValue=="")return alert('KXH tw
     await updateDoc(documentRef, updatedData);
     console.log("Document successfully updated!");
     window.location.reload();
-    // continueUi(...updatedData)
-    
   } catch (error) {
     console.error("Error updating document: ", error);
     Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Something went wrong!',
-      footer: '<a href="">Why do I have this issue?</a>'
-    })
-    
+      icon: "error",
+      title: "Oops...",
+      text: "Something went wrong!",
+      footer: '<a href="">Why do I have this issue?</a>',
+    });
   }
 }
 logoutBtn.addEventListener("click", () => {
@@ -293,18 +280,17 @@ logoutBtn.addEventListener("click", () => {
     .then(() => {
       // Sign-out successful.
       alert("Sign-out successful");
-      window.location = "../AllBlogs/index.html";
+      window.location = "../index.html";
     })
     .catch((error) => {
       // An error happened.
       console.log(" An error happened.");
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-        footer: '<a href="">Why do I have this issue?</a>'
-      })
-      
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+        footer: '<a href="">Why do I have this issue?</a>',
+      });
     });
 });
 // continueUi();
